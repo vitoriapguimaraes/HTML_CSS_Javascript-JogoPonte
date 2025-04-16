@@ -1,47 +1,113 @@
-const totalRodadas = 3;
-let rodada = 1;
+const rulesScreen = document.getElementById("rules-content");
+const rulesButtons = document.querySelectorAll(".rules-button");
+const closeRulesButton = document.getElementById("close-rules");
+const playButton = document.getElementById("play-button")
+const restartButton = document.getElementById("restart-button")
+const homeButton = document.getElementById("home-button")
+const finalResultText = document.getElementById("final-result");
+const gameContent = document.getElementById("game-content");
 
-function iniciarJogo() {
-    rodada = 1;
-    document.getElementById("game-container").innerHTML = "";
-    criarNovaRodada();
+const totalRounds = 3;
+let currentRound = 1;
+
+const glassSafeImgSrc = "./src/assets/glass-img-1.png";
+const glassSafeImgAlt = "Imagem de um vidro seguro";
+const glassBrokenImgSrc = "./src/assets/broken_glass-img-2.png";
+const glassBrokenImgAlt = "Imagem de um vidro quebrado";
+
+rulesButtons.forEach(button => {
+    button.addEventListener("click", () => rulesScreen.classList.add("show"));
+});
+
+closeRulesButton.addEventListener("click", () => rulesScreen.classList.remove("show"));
+
+playButton.addEventListener("click", startGame);
+
+restartButton.addEventListener("click", () => {
+    finalResultText.textContent = "Tente sua sorte";
+    gameContent.innerHTML = "";
+    startGame();
+});
+
+homeButton.addEventListener("click", () => showScreen("main-screen"));
+
+function showScreen(screenId) {
+    const screens = ["main-screen", "game-screen"];
+    screens.forEach(id => {
+        const screen = document.getElementById(id);
+        screen.style.display = id === screenId ? "flex" : "none";
+    });
 }
 
-function criarNovaRodada() {
-    let gameContainer = document.getElementById("game-container");
-
-    let novaRodada = document.createElement("div");
-    novaRodada.classList.add("game");
-    novaRodada.innerHTML = `
-        <h3>Rodada ${rodada}: Escolha um vidro</h3>
-        <div>
-            <button onclick="chutar(1, this)" class="vidro">Vidro 1</button>
-            <button onclick="chutar(2, this)" class="vidro">Vidro 2</button>
-        </div>
-        <h3 class="resultado">Resultado aparecerá aqui...</h3>
-    `;
-
-    gameContainer.appendChild(novaRodada);
+function startGame() {
+    currentRound = 1;
+    gameContent.innerHTML = "";
+    finalResultText.textContent = "Tente sua sorte";
+    showScreen("game-screen");
+    createRound();
 }
 
-function chutar(escolha, botaoClicado) {
-    let resultadoElemento = botaoClicado.closest(".game").querySelector(".resultado");
-    let pisoSeguro = Math.floor(Math.random() * 2) + 1;
+function createRound() {
+    const roundBox = document.createElement("div");
+    roundBox.classList.add("game");
 
-    botaoClicado.closest(".game").querySelectorAll(".vidro").forEach(btn => btn.classList.remove("selecionado"));
+    const button1 = createGlassButton(1, roundBox);
+    const button2 = createGlassButton(2, roundBox);
 
-    botaoClicado.classList.add("selecionado");
+    roundBox.append(button1, button2);
+    gameContent.appendChild(roundBox);
+}
 
-    if (escolha === pisoSeguro) {
-        resultadoElemento.innerHTML = "Você pisou no vidro certo!";
-        rodada++;
-        if (rodada <= totalRodadas) {
-            setTimeout(criarNovaRodada, 1000);
-        } else {
-            setTimeout(() => resultadoElemento.innerHTML = "Parabéns! Você atravessou a ponte!", 1000);
+function createGlassButton(choice, roundBox) {
+    const button = document.createElement("button");
+    button.className = "glass-button";
+    button.dataset.choice = choice;
+
+    const glassBox = document.createElement("div");
+    glassBox.classList.add("glass-box");
+
+    button.appendChild(glassBox);
+    button.addEventListener("click", () => evaluateChoice(choice));
+
+    return button;
+}
+
+function evaluateChoice(choice) {
+    const safeGlass = Math.floor(Math.random() * 2) + 1;
+    const currentRoundBox = document.querySelector(`#game-content > .game:last-child`);
+    const buttons = currentRoundBox.querySelectorAll(".glass-button");
+
+    buttons.forEach((btn, index) => {
+        btn.disabled = true;
+        const chosen = parseInt(btn.dataset.choice);
+        const isCorrect = chosen === safeGlass;
+        const glassElement = btn.querySelector(".glass-box");
+
+        if (glassElement) {
+            if (isCorrect) {
+                glassElement.classList.add("correct");
+                glassElement.textContent = "Seguro";
+            } else {
+                glassElement.classList.add("incorrect");
+                glassElement.textContent = "Quebrou";
+            }
         }
+    });
+
+    if (choice === safeGlass) {
+        finalResultText.textContent = "Você pisou no vidro certo!";
+        currentRound++;
+
+        if (currentRound <= totalRounds) {
+            setTimeout(createRound, 1000);
+        } else {
+            setTimeout(() => {
+                finalResultText.textContent = "🎉 Parabéns! Você atravessou a ponte!";
+            }, 1000);
+        }
+
     } else {
-        resultadoElemento.innerHTML = "O vidro quebrou! Você caiu e perdeu o jogo.";
-        setTimeout(iniciarJogo, 2000);
+        finalResultText.textContent = "💥 O vidro quebrou! Você perdeu";
+        setTimeout(() => startGame(), 2000);
     }
 }
