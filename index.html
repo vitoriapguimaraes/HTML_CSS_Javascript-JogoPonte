@@ -5,36 +5,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ponte de Vidro</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles.css">
+    <script defer src="./src/script.js"></script>
 
 </head>
 
 <body>
 
-    <div class="container">
+    <div id="main-screen">
 
-        <div class="content">
+        <h1>Jogo da Ponte</h1>
+        <div class="main-text">
+            <p>Pra ganhar, é preciso coragem!<br>
+                Você tem o que é preciso para atravessar a ponte de vidro?<br>
+                Cada clique pode ser o seu avanço… ou sua queda!<br>
+                Escolha com sabedoria qual vidro pisar e tente
+                chegar ao outro lado.</p>
+        </div>
 
-            <div class="text">
-                <h1>Pra ganhar, é preciso coragem!</h1>
-                <h2>Você tem o que é preciso para atravessar a ponte de vidro?</h2>
-                <h3>Cada clique pode ser o seu avanço… ou sua queda! Escolha com sabedoria qual vidro pisar e tente
-                    chegar ao outro lado.</h3>
-                <p>🕹️ Regras do jogo:</p>
-                <p>✅ Clique nos botões para selecionar um vidro.</p>
-                <p>✅ Apenas um deles é seguro em cada rodada.</p>
-                <p>✅ São 3 rodadas</p>
-                <p>Será que você consegue atravessar a ponte inteira?</p>
-                <p>Teste sua sorte agora!</p>
+        <div class="menu">
+            <button class="rules-button">Ver regras</button>
+            <button id="play-button">Jogar</button>
+        </div>
+
+    </div>
+
+    <div id="rules-content" class="modal">
+        <div class="modal-box">
+            <button class="close-button" id="close-rules">&times;</button>
+            <h2>Regras do jogo</h2>
+            <div class="text-box">
+                <p>
+                    ✅ Clique nos botões para selecionar um vidro.<br>
+                    ✅ Apenas um deles é seguro em cada rodada.<br>
+                    ✅ São 3 rodadas<br><br>
+                    Será que você consegue atravessar a ponte inteira?<br><br>
+                    Teste sua sorte agora!
+                </p>
             </div>
-
-            <div id="game-container">
-                <button onclick="iniciarJogo()">Iniciar Jogo</button>
-            </div>
-
         </div>
     </div>
+
+    <div id="game-screen" style="display: none;">
+
+        <div class="game-header">
+            <div class="game-header-text">
+                <h1>Jogo da Ponte</h1>
+                <p>Escolha com sabedoria qual vidro pisar e tente chegar ao outro lado.</p>
+            </div>
+            <div class="menu">
+                <button class="rules-button">Ver regras</button>
+                <button id="home-button">Voltar ao menu</button>
+                <button id="restart-button">Reiniciar</button>
+            </div>
+        </div>
+
+        <div id="game-container">
+
+            <p id="final-result"></p>
+            
+            <div id="game-content"></div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    <footer class="disclaimer">
+        <img src="./src/assets/round6-draw.jpg" alt="Ilustração baseada na série Round 6" width="70">
+        <div class="disclaimer-text">
+            <p>Jogo desenvolvido inspirado nas aulas da Imersão Dev Alura 2025 e jogo da série round 6</p>
+        </div>
+    </footer>
 
 </body>
 
