@@ -7,7 +7,7 @@ Um clique errado e você cai!
 
 <a href="https://vitoriapguimaraes.github.io/HTML_CSS_Javascript-JogoPonte/"><img src="https://img.shields.io/badge/-Acesse:%20Jogo%20Ponte-000000?style=for-the-badge" alt="HTML_CSS_Javascript-JogoPonte">
 
-![Tela do sistema](https://github.com/vitoriapguimaraes/HTML_CSS_Javascript-JogoPonte/blob/main/results/game.gif)
+![Tela do sistema](https://github.com/vitoriapguimaraes/HTML_CSS_Javascript-JogoPonte/blob/dev/results/game.gif)
 
 ## Funcionalidades Principais:
 
