@@ -102,7 +102,7 @@ function evaluateChoice(choice) {
             setTimeout(createRound, 1000);
         } else {
             setTimeout(() => {
-                finalResultText.textContent = "🎉 Parabéns! Você atravessou a ponte!";
+                finalResultText.textContent = "🎉 Parabéns! Atravessou a ponte!";
             }, 1000);
         }
 

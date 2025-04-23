@@ -1,13 +1,19 @@
+/* Mobile */
+
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Baloo 2', cursive;
+    background: url('./assets/background-img.jpg') center/cover no-repeat fixed;
+    color: rgb(3, 29, 51);
     height: 100vh;
     overflow: hidden;
-    font-family: 'Baloo 2', cursive;
-    color: rgb(3, 29, 51);
-    background-color: black;
-    background: url('./assets/background-img.jpg') center/cover no-repeat;
-    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 700;
 }
 
 #main-screen,
@@ -25,43 +31,45 @@ body {
     height: 100vh;
     width: 100%;
     text-align: center;
-    gap: 3rem;
+    gap: 2rem;
     margin-top: 2rem;
 }
 
-h1 {
-    font-size: 5rem;
-    margin: 0;
-}
-
 .main-text {
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    font-size: 1rem;
     width: 90%;
+    height: auto;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     border-radius: 0.8rem;
     color: white;
+    text-align: center;
+}
+
+.main-text p {
+    padding: 1rem;
+    font-weight: 600;
 }
 
 .menu {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
 }
 
 button {
-    background-color: #ff815bb9;
-    backdrop-filter: blur(4px);
-    border: none;
+    width: 90%;
     padding: 1rem;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 0.8rem;
+    font-size: 1rem;
+    background-color: #ff815bd0;
     color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.8rem;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 button:hover {
@@ -98,9 +106,11 @@ button:hover {
     border-radius: 1rem;
     position: relative;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    margin: 1rem;
 }
 
 .close-button {
+    width: 4rem;
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -111,27 +121,19 @@ button:hover {
     cursor: pointer;
 }
 
-#game-screen {
-    display: flex;
-    justify-content: center;
-    margin-top: 0;
-}
-
 .game-header {
-    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
     position: fixed;
     top: 0;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
+    height: 11.5rem;
 }
 
 .game-header h1 {
-    font-size: 3rem;
-    margin: 0;
     color: white;
 }
 
@@ -141,27 +143,44 @@ button:hover {
     color: white;
 }
 
+.game-header .menu {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.game-header button {
+    font-size: 0.8rem;
+    height: 3rem;
+    width: auto;
+}
+
+#game-container {
+    margin-top: 13rem;
+    display: flex;
+    flex-direction: column;
+}
+
 #final-result {
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
 #game-content {
-    width: 85rem;
     display: flex;
-    gap: 5rem;
+    flex-direction: column;
+    gap: 2rem;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
 
 .game {
     width: 25rem;
-    height: 20rem;
+    height: 8rem;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(6px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -173,7 +192,6 @@ button:hover {
     border-radius: 16px;
 }
 
-/* Botão de vidro (invisível, apenas responsivo) */
 .glass-button {
     background: none;
     padding: 0;
@@ -186,22 +204,24 @@ button:hover {
     height: 10rem;
 }
 
-/* Efeito ao passar o mouse */
 .glass-button:hover {
     transform: scale(1.05);
     background: none;
 }
 
-/* Efeito ao clicar */
 .glass-button:active {
     transform: scale(0.95);
     opacity: 0.8;
 }
 
-/* Bloco visual que simula o vidro */
+.glass-box,
+.glass-button {
+  width: 6rem;
+  height: 6rem;
+  font-size: 0.9rem;
+}
+
 .glass-box {
-    width: 10rem;
-    height: 10rem;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
@@ -216,13 +236,11 @@ button:hover {
     justify-content: center;
 }
 
-/* Vidro seguro */
 .glass-box.correct {
     background-color: rgba(0, 200, 0, 0.3);
     border: 1px solid rgba(0, 200, 0, 0.6);
 }
 
-/* Vidro quebrado */
 .glass-box.incorrect {
     background-color: rgba(255, 0, 0, 0.3);
     border: 1px solid rgba(255, 0, 0, 0.6);
@@ -247,9 +265,135 @@ button:hover {
     font-family: 'Baloo 2', cursive;
     font-weight: 400;
     color: white;
+    margin-left: 1rem;
 }
 
 .disclaimer img {
     border-right: 2px solid rgba(255, 255, 255, 0.5);
     padding-right: 1rem;
+}
+
+/* Tablets - min-width: 768px */
+@media (min-width: 768px) {
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .game-header {
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        height: 9rem;
+    }
+
+    .game-header .menu {
+        width: 50%;
+    }
+
+    .game-header button {
+        font-size: 1rem;
+        height: 5rem;
+        width: auto;
+    }
+
+    #game-container {
+        margin-top: 11rem;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #final-result {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    #game-content {
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .game {
+        height: 12rem;
+    }
+  
+    .glass-box,
+    .glass-button {
+      width: 8rem;
+      height: 8rem;
+      font-size: 1rem;
+    }
+}
+  
+/* Desktops - min-width: 1024px */
+@media (min-width: 1024px) {
+    h1 {
+      font-size: 3rem;
+    }
+  
+    .main-text {
+      font-size: 1.2rem;
+    }
+  
+    .menu {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        width: 90%;
+    }
+  
+    .game-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        height: 8rem;
+        width: 100%;
+    }
+  
+    .game-header .menu {
+        width: 40%;
+    }
+
+    .game-header button {
+        font-size: 1rem;
+        height: 5rem;
+        width: auto;
+    }
+
+    #game-container {
+        margin-top: 10rem;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #final-result {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    #game-content {
+        gap: 5rem;
+        flex-direction: row;
+    }
+
+    .game {
+        height: 18rem;
+        width: 25.3rem;
+    }
+    
+    .glass-box,
+    .glass-button {
+        width: 10rem;
+        height: 10rem;
+        font-size: 1.1rem;
+    }
 }
