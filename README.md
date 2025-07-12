@@ -2,8 +2,6 @@
 
 > Um jogo web interativo inspirado na série Round 6, desenvolvido durante a Imersão Dev Alura 2025. O objetivo é atravessar uma ponte de vidro, testando sua coragem e sorte a cada rodada. Escolha com sabedoria onde pisar: apenas um vidro é seguro em cada etapa. Um clique errado e você cai!
 
-<a href="https://vitoriapguimaraes.github.io/HTML_CSS_Javascript-JogoPonte/"><img src="https://img.shields.io/badge/-Acesse:%20Jogo%20Ponte-000000?style=for-the-badge" alt="HTML_CSS_Javascript-JogoPonte">
-
 [![Acesse: Jogo Ponte](https://img.shields.io/badge/-Acesse:%20Jogo%20Ponte-000000?style=for-the-badge)](https://vitoriapguimaraes.github.io/HTML_CSS_Javascript-JogoPonte/)
 
 ![Tela do sistema](https://github.com/vitoriapguimaraes/HTML_CSS_Javascript-JogoPonte/blob/dev/results/game.gif)
